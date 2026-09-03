@@ -1,15 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:wonderwork/data/constants.dart';
+import 'package:wonderwork/views/widgets/hero_widget.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Padding(
+      padding: EdgeInsets.all(20.0),
+      child: Column(
+        children: [
+          HeroWidget(),
+          Container(
+            width: double.infinity,
+            padding: EdgeInsets.symmetric(vertical: 20.0),
+            child: Card(
+              child: Padding(
+                padding: EdgeInsets.all(20.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [Text('Oanh', style: KTextStyle.titleText)],
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }

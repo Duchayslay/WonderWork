@@ -1,15 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:wonderwork/data/notifiers.dart';
+import 'package:wonderwork/views/pages/welcome_page.dart';
 
-class ProfilePage extends StatefulWidget {
+class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
 
   @override
-  State<ProfilePage> createState() => _ProfilePageState();
-}
-
-class _ProfilePageState extends State<ProfilePage> {
-  @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: Column(
+        children: [
+          ListTile(
+            title: Text('Logout'),
+            onTap: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    selectedPageNotifier.value = 0;
+                    return WelcomePage();
+                  },
+                ),
+              );
+            },
+          ),
+        ],
+      ),
+    );
   }
 }
