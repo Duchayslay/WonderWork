@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:wonderwork/data/constants.dart';
 import 'package:wonderwork/data/notifiers.dart';
 import 'package:wonderwork/views/widgets/navbar_widget.dart';
 import 'package:wonderwork/views/pages/home_page.dart';
@@ -32,7 +34,13 @@ class WidgetTree extends StatelessWidget {
             icon: Icon(Icons.settings),
           ),
           IconButton(
-            onPressed: () {
+            onPressed: () async {
+              final SharedPreferences prefs =
+                  await SharedPreferences.getInstance();
+              await prefs.setBool(
+                KConstants.themeModeKey,
+                isDarkModeNotifier.value,
+              );
               isDarkModeNotifier.value = !isDarkModeNotifier.value;
             },
             icon: ValueListenableBuilder(

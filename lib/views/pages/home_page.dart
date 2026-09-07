@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wonderwork/data/constants.dart';
+import 'package:wonderwork/views/pages/container_widget.dart';
 import 'package:wonderwork/views/widgets/hero_widget.dart';
 
 class HomePage extends StatelessWidget {
@@ -8,24 +9,21 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(20.0),
-      child: Column(
-        children: [
-          HeroWidget(),
-          Container(
-            width: double.infinity,
-            padding: EdgeInsets.symmetric(vertical: 20.0),
-            child: Card(
-              child: Padding(
-                padding: EdgeInsets.all(20.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [Text('Oanh', style: KTextStyle.titleText)],
-                ),
-              ),
+      padding: EdgeInsets.symmetric(horizontal: 20.0),
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            HeroWidget(title: 'Flutter Hero'),
+            Column(
+              children: List.generate(2, (index) {
+                return ContainerWidget(
+                  title: 'Title $index',
+                  description: 'Description $index',
+                );
+              }),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
