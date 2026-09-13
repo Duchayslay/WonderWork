@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wonderwork/views/pages/expanded_flexible_page.dart';
 
 class SettingPage extends StatefulWidget {
   final String title;
@@ -27,6 +28,30 @@ class _SettingPageState extends State<SettingPage> {
             decoration: const InputDecoration(border: UnderlineInputBorder()),
             onEditingComplete: () {
               setState(() {});
+            },
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return ExpandedFlexiblePage();
+                  },
+                ),
+              );
+            },
+            child: const Text("Go to ExpandedFlexiblePage"),
+          ),
+          Text(controller.text),
+          CheckboxListTile(
+            tristate: true,
+            title: const Text("Giới tính"),
+            value: isChecked,
+            onChanged: (bool? value) {
+              setState(() {
+                isChecked = value;
+              });
             },
           ),
           Text(controller.text),
